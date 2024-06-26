@@ -6,6 +6,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        accent: "var(--tc-accent)",
+        purple: "#7e5bef",
+        pink: "#e91e63",
+        star: "#ffc107",
+        orange: "#ff7849",
+        green: "#13ce66",
+        yellow: "#ffc82c",
+        "gray-dark": "#273444",
+        gray: "#8492a6",
+        "gray-light": "#d3dce6",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
