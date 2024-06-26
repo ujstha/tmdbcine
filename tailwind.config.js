@@ -8,21 +8,12 @@ module.exports = {
     extend: {
       colors: {
         accent: "var(--tc-accent)",
-        purple: "#7e5bef",
-        pink: "#e91e63",
-        star: "#ffc107",
-        orange: "#ff7849",
-        green: "#13ce66",
-        yellow: "#ffc82c",
-        "gray-dark": "#273444",
-        gray: "#8492a6",
-        "gray-light": "#d3dce6",
+        danger: "var(--tc-danger)",
+        warn: "var(--tc-warn)",
+        primary: "var(--tc-bg-primary)",
+        secondary: "var(--tc-text-primary)",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      },
+      
     },
   },
   plugins: [],
