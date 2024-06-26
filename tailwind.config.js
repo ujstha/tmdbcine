@@ -13,7 +13,6 @@ module.exports = {
         primary: "var(--tc-bg-primary)",
         secondary: "var(--tc-text-primary)",
       },
-      
     },
   },
   plugins: [],
