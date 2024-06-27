@@ -1,20 +1,21 @@
 "use client";
 
+import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import { HEART_ICON, STAR_ICON } from "../../constants/icons";
 import { Card, CardImage, CardTitle } from "./Card";
 
 export const CardHoverEffect = ({ items }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className="grid grid-cols-2 gap-x-2 gap-y-4 md:grid-cols-3 lg:grid-cols-5">
+    <div className="grid grid-cols-2 gap-x-1 gap-y-4 md:grid-cols-3 lg:grid-cols-5">
       {items?.map((item, idx) => (
-        <Link
-          href={item?.link}
+        <div
           key={item?.link}
-          className="group relative block size-full"
+          className="group relative block size-full overflow-hidden rounded-xl p-2"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -35,11 +36,19 @@ export const CardHoverEffect = ({ items }) => {
               />
             )}
           </AnimatePresence>
-          <div key={idx} className="relative m-2">
+          <Link
+            href="sljf"
+            title="Add to Favorite"
+            className="absolute right-4 top-12 z-50 rounded-lg bg-black px-3 py-2 transition-transform duration-300 hover:text-accent group-hover:translate-x-0 md:translate-x-56"
+          >
+            <Icon icon={HEART_ICON} height={16} />
+          </Link>
+          <Link href={item?.link} key={idx} className="relative">
             <Card>
-              <div className="absolute right-0 top-0 z-50 rounded-lg bg-warn px-2 py-1 text-sm font-semibold text-background">
-                8.5
+              <div className="absolute right-2 top-2 z-50 flex items-center gap-0.5 rounded-lg bg-black px-1.5 py-1 text-sm text-foreground">
+                <Icon icon={STAR_ICON} height={16} className="text-warn" /> 8.5
               </div>
+
               <CardImage src="https://image.tmdb.org/t/p/original/2H1TmgdfNtsKlU9jKdeNyYL5y8T.jpg" />
             </Card>
             <CardTitle>{item.title}</CardTitle>
@@ -48,14 +57,14 @@ export const CardHoverEffect = ({ items }) => {
                 <span
                   key={genre}
                   // eslint-disable-next-line tailwindcss/no-custom-classname
-                  className="rounded-md bg-background-hover px-2 py-1 text-xs capitalize text-secondary hover:text-danger"
+                  className="genre rounded-md text-xxs capitalize text-secondary hover:text-danger md:text-xs"
                 >
                   {genre}
                 </span>
               ))}
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       ))}
     </div>
   );

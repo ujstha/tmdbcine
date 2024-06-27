@@ -5,7 +5,7 @@ export const Card = ({ className, children }) => {
   return (
     <div
       className={cn(
-        "bg-background md:h-85 relative z-20 h-64 w-full overflow-hidden rounded-lg",
+        "bg-background md:h-68 relative z-20 h-64 w-full overflow-hidden rounded-lg",
         className
       )}
     >
@@ -20,7 +20,7 @@ export const CardTitle = ({ className, children }) => {
   return (
     <h4
       className={cn(
-        "relative mt-2.5 font-medium truncate leading-5 tracking-wide text-accent",
+        "relative mt-2.5 truncate leading-5 tracking-wide text-accent",
         className
       )}
     >
