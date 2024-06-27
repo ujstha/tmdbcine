@@ -1,3 +1,5 @@
+export * from "./cn";
+
 export const toSlug = (str, separator = "-") => {
   return str
     .toString()
