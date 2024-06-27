@@ -16,7 +16,7 @@
   :root {
     --tc-accent: #1890ff;
     --tc-secondary: #a9a9a9;
-    --tc-danger: #e91e63;
+    --tc-danger: #f57ea6;
     --tc-warn: #ffc107;
     --tc-text-primary: #dddddd;
     --tc-bg-primary: #1d1d1d;
@@ -31,6 +31,7 @@ html {
 body {
   color: var(--tc-text-primary);
   background: var(--tc-bg-primary);
+  font-weight: 300;
 }
 
 @layer utilities {

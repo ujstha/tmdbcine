@@ -25,7 +25,14 @@ const items = [
   {
     title: "Inside Out",
     link: "https://tmdb",
-    genres: ["action", "adventure", "crime", "mystery", "thriller"],
+    genres: [
+      "action",
+      "adventure",
+      "crime",
+      "mystery",
+      "thriller",
+      "animation",
+    ],
   },
   {
     title: "Inside Out lsjdfklsjlfkjslkdfjslk sdlfkjs ",
