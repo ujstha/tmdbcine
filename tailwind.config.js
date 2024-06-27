@@ -16,11 +16,16 @@ module.exports = {
         "background-hover": "var(--tc-bg-hover)",
       },
       height: {
+        68: "17rem",
         85: "21rem",
         90: "22rem",
       },
       maxWidth: {
-        body: "80rem",
+        body: "70rem",
+        "body-md": "48rem",
+      },
+      fontSize: {
+        xxs: "0.65rem",
       },
     },
   },

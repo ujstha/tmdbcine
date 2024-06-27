@@ -48,7 +48,7 @@ const items = [
 
 const Home = () => {
   return (
-    <div className="mx-auto max-w-body">
+    <div className="mx-auto sm:max-w-body-md lg:max-w-body ">
       <Button />
       <CardHoverEffect items={items} />
     </div>

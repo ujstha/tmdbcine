@@ -11,7 +11,7 @@ export const CardHoverEffect = ({ items }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className="grid grid-cols-2 gap-x-1 gap-y-4 md:grid-cols-3 lg:grid-cols-5">
+    <div className="grid grid-cols-2 gap-x-1 gap-y-4 md:grid-cols-4 lg:grid-cols-5">
       {items?.map((item, idx) => (
         <div
           key={item?.link}
