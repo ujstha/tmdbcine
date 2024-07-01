@@ -1,57 +1,14 @@
-import { Button } from "@/components";
-import { CardHoverEffect } from "../components/ui/CardHoverEffect";
-
-const items = [
-  {
-    title: "Inside Out",
-    link: "https://tmdb",
-    genres: ["action", "adventure", "crime"],
-  },
-  {
-    title: "Inside Out",
-    link: "https://tmdb",
-    genres: ["action", "adventure", "crime", "mystery", "thriller"],
-  },
-  {
-    title: "Inside Out",
-    link: "https://tmdb",
-    genres: ["action", "adventure", "crime", "mystery", "thriller"],
-  },
-  {
-    title: "Inside Out",
-    link: "https://tmdb",
-    genres: ["action", "adventure", "crime", "mystery", "thriller"],
-  },
-  {
-    title: "Inside Out",
-    link: "https://tmdb",
-    genres: [
-      "action",
-      "adventure",
-      "crime",
-      "mystery",
-      "thriller",
-      "animation",
-    ],
-  },
-  {
-    title: "Inside Out lsjdfklsjlfkjslkdfjslk sdlfkjs ",
-    link: "https://tmdb",
-    genres: ["action", "adventure", "crime", "mystery", "thriller"],
-  },
-  {
-    title: "Inside Out lsjdfklsjlfkjslkdfjslk sdlfkjs ",
-    link: "https://tmdb",
-    genres: ["action", "adventure", "crime", "mystery", "thriller"],
-  },
-];
+"use client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Trending from "./trending/page";
 
 const Home = () => {
+  const queryClient = new QueryClient();
+
   return (
-    <div className="mx-auto sm:max-w-body-md lg:max-w-body ">
-      <Button />
-      <CardHoverEffect items={items} />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Trending />
+    </QueryClientProvider>
   );
 };
 
