@@ -9,7 +9,7 @@
   --tc-warn: #ffc107;
   --tc-text-primary: #1d1d1d;
   --tc-bg-primary: #dddddd;
-  --tc-bg-hover: rgba(0, 0, 0, 0.2);
+  --tc-bg-hover: rgba(0, 0, 0, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,4 +41,10 @@ body {
   .genre:not(:last-of-type)::after {
     content: ", ";
   }
+}
+
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
 }

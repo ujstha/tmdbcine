@@ -1,4 +1,5 @@
 "use client";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Trending from "./trending/page";
 
@@ -8,6 +9,7 @@ const Home = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Trending />
+      <iconify-icon icon="mdi:home"></iconify-icon>ss
     </QueryClientProvider>
   );
 };

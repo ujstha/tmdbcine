@@ -1,6 +1,5 @@
-import { Button, CardHoverEffect, Loader } from "@/components";
-import { fetchTrending } from "@/services";
-import { useQuery } from "@tanstack/react-query";
+import { CardHoverEffect, Loader } from "@/components";
+import { useTrendings } from "@/hooks";
 
 // const items = [
 //   {
@@ -48,17 +47,15 @@ import { useQuery } from "@tanstack/react-query";
 // ];
 
 const Trending = () => {
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["todos"],
-    queryFn: async () => await fetchTrending(),
-  });
+  const { isLoading, data } = useTrendings();
 
+  if (isLoading) {
+    return <Loader size="4" />;
+  }
   console.log({ data });
   return (
     <div className="mx-auto sm:max-w-body-md lg:max-w-body ">
-      <Button />
       <CardHoverEffect isLoading={isLoading} items={data?.data?.results} />
-      <Loader size="4" />
     </div>
   );
 };
