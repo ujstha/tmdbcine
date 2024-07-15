@@ -1,50 +1,7 @@
-import { CardHoverEffect, Loader, MainCard } from "@/components";
-import { useTrendings } from "@/hooks";
+"use client";
 
-// const items = [
-//   {
-//     title: "Inside Out",
-//     link: "https://tmdb",
-//     genres: ["action", "adventure", "crime"],
-//   },
-//   {
-//     title: "Inside Out",
-//     link: "https://tmdb",
-//     genres: ["action", "adventure", "crime", "mystery", "thriller"],
-//   },
-//   {
-//     title: "Inside Out",
-//     link: "https://tmdb",
-//     genres: ["action", "adventure", "crime", "mystery", "thriller"],
-//   },
-//   {
-//     title: "Inside Out",
-//     link: "https://tmdb",
-//     genres: ["action", "adventure", "crime", "mystery", "thriller"],
-//   },
-//   {
-//     title: "Inside Out",
-//     link: "https://tmdb",
-//     genres: [
-//       "action",
-//       "adventure",
-//       "crime",
-//       "mystery",
-//       "thriller",
-//       "animation",
-//     ],
-//   },
-//   {
-//     title: "Inside Out lsjdfklsjlfkjslkdfjslk sdlfkjs ",
-//     link: "https://tmdb",
-//     genres: ["action", "adventure", "crime", "mystery", "thriller"],
-//   },
-//   {
-//     title: "Inside Out lsjdfklsjlfkjslkdfjslk sdlfkjs ",
-//     link: "https://tmdb",
-//     genres: ["action", "adventure", "crime", "mystery", "thriller"],
-//   },
-// ];
+import { CardHoverEffect, Loader, MediaCard } from "@/components";
+import { useTrendings } from "@/hooks";
 
 const Trending = () => {
   const { isLoading, data } = useTrendings();
@@ -54,10 +11,10 @@ const Trending = () => {
   }
   console.log({ data });
   return (
-    <div className="mx-auto grid grid-cols-5 sm:max-w-body-md lg:max-w-body">
+    <div className="mx-auto grid grid-cols-2 sm:max-w-body-md md:grid-cols-4 lg:max-w-body lg:grid-cols-5">
       {data?.data?.results?.map((item, idx) => (
         <CardHoverEffect key={idx} index={idx}>
-          <MainCard item={item} />
+          <MediaCard item={item} />
         </CardHoverEffect>
       ))}
     </div>

@@ -2,9 +2,10 @@ import { Card, CardImage, CardTitle, FavoriteButton } from "@/components";
 import { API_IMAGE_BASE_URL } from "@/constants";
 import { renderReleaseYear, toSlug } from "@/utils";
 import Link from "next/link";
+import { Genre } from "./Genre";
 import { Rating } from "./Rating";
 
-export const MainCard = ({ item }) => {
+export const MediaCard = ({ item }) => {
   return (
     <>
       <FavoriteButton />
@@ -20,18 +21,9 @@ export const MainCard = ({ item }) => {
           {item.title} ({renderReleaseYear(item)})
         </CardTitle>
       </Link>
-      {/* <div className="mt-2 flex flex-wrap gap-1">
-            {item.genres.map((genre) => (
-              <Link
-                key={genre}
-                href={genre}
-                // eslint-disable-next-line tailwindcss/no-custom-classname
-                className="genre relative rounded-md text-xxs capitalize text-secondary transition-all duration-300 hover:text-danger hover:underline md:text-xs"
-              >
-                {genre}
-              </Link>
-            ))}
-          </div> */}
+      <div className="mt-2 flex flex-wrap gap-1">
+        <Genre genres={item?.genre_ids} />
+      </div>
     </>
   );
 };

@@ -1,4 +1,4 @@
-export * from "./MainCard";
+export * from "./MediaCard";
 export * from "./Rating";
 export * from "./ui/Card";
 export * from "./ui/CardHoverEffect";
