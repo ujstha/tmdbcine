@@ -22,7 +22,7 @@ export const MediaCard = ({ item }) => {
         </CardTitle>
       </Link>
       <div className="mt-2 flex flex-wrap gap-1">
-        <Genre genres={item?.genre_ids} />
+        <Genre genres={item?.genre_ids} mediaType={item?.media_type} />
       </div>
     </>
   );

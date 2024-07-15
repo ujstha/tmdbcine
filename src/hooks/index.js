@@ -9,8 +9,8 @@ export const useTrendings = () =>
     queryFn: async () => await fetchTrending(),
   });
 
-export const useGenres = (type = "movie") =>
+export const useGenres = (mediaType = "movie") =>
   useQuery({
     queryKey: ["genres"],
-    queryFn: async () => await fetchGenre(type),
+    queryFn: async () => await fetchGenre(mediaType),
   });

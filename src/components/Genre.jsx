@@ -2,10 +2,10 @@
 
 import { useGenres } from "@/hooks";
 import Link from "next/link";
-import { Loader } from ".";
+import { Loader } from "./ui/Loader";
 
-export const Genre = ({ genres }) => {
-  const { isLoading, data } = useGenres();
+export const Genre = ({ genres, mediaType = "movie" }) => {
+  const { isLoading, data } = useGenres(mediaType);
 
   if (isLoading) return <Loader />;
 
@@ -14,7 +14,7 @@ export const Genre = ({ genres }) => {
     ?.map((genre) => (
       <Link
         key={genre.id}
-        href={"genre"}
+        href={`/${mediaType}?genre_id=${genre.id}`}
         className="genre relative rounded-md text-xxs capitalize text-secondary transition-all duration-300 hover:text-danger hover:underline md:text-xs"
       >
         {genre.name}
