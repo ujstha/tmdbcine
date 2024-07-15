@@ -1,5 +1,5 @@
 export const API_BASE_URL = "https://api.themoviedb.org/3";
-export const API_KEY = process.env.TMDB_API_KEY;
+export const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 export const API_IMAGE_BASE_URL = {
   extra_small: "https://image.tmdb.org/t/p/w45",
   small_2: "https://image.tmdb.org/t/p/w154",

@@ -10,3 +10,7 @@ export const toSlug = (str, separator = "-") => {
     .replace(/[^a-z0-9 ]/g, "") // remove all chars not letters, numbers and spaces (to be replaced)
     .replace(/\s+/g, separator);
 };
+
+export const renderReleaseYear = (item) => {
+  return new Date(item?.release_date).getFullYear();
+};

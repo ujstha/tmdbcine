@@ -1,4 +1,4 @@
-import { CardHoverEffect, Loader } from "@/components";
+import { CardHoverEffect, Loader, MainCard } from "@/components";
 import { useTrendings } from "@/hooks";
 
 // const items = [
@@ -54,8 +54,12 @@ const Trending = () => {
   }
   console.log({ data });
   return (
-    <div className="mx-auto sm:max-w-body-md lg:max-w-body ">
-      <CardHoverEffect isLoading={isLoading} items={data?.data?.results} />
+    <div className="mx-auto grid grid-cols-5 sm:max-w-body-md lg:max-w-body">
+      {data?.data?.results?.map((item, idx) => (
+        <CardHoverEffect key={idx} index={idx}>
+          <MainCard item={item} />
+        </CardHoverEffect>
+      ))}
     </div>
   );
 };

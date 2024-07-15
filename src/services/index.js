@@ -3,7 +3,7 @@ import axios from "axios";
 
 const client = axios.create({
   baseURL: API_BASE_URL,
-  params: { api_key: API_KEY },
+  params: { api_key: process.env.TMDB_API_KEY },
   responseType: "json",
 });
 
