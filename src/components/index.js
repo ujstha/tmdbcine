@@ -7,5 +7,6 @@ export * from "./ui/Container";
 export * from "./ui/CustomIcon";
 export * from "./ui/FavoriteButton";
 export * from "./ui/Loader";
+export * from "./ui/Navbar";
 export * from "./ui/Section";
 export * from "./ui/Skeleton";

@@ -3,7 +3,7 @@ import { Container } from "./Container";
 
 export const Section = ({ children, sectionClassName, containerClassName }) => {
   return (
-    <section className={cn("px-4 py-10 lg:py-16", sectionClassName)}>
+    <section className={cn("md:px-4 py-10 lg:py-16", sectionClassName)}>
       <Container className={containerClassName}>{children}</Container>
     </section>
   );
