@@ -2,7 +2,7 @@ export * from "./cn";
 
 export const toSlug = (str, separator = "-") => {
   return str
-    .toString()
+    ?.toString()
     .normalize("NFD") // split an accented letter in the base letter and the acent
     .replace(/[\u0300-\u036f]/g, "") // remove all previously split accents
     .toLowerCase()
@@ -11,6 +11,11 @@ export const toSlug = (str, separator = "-") => {
     .replace(/\s+/g, separator);
 };
 
-export const renderReleaseYear = (item) => {
-  return new Date(item?.release_date).getFullYear();
+export const renderReleaseYear = (releaseDate) => {
+  return new Date(releaseDate).getFullYear();
+};
+
+export const hexToRgba = (hex, alpha = 1) => {
+  const [r, g, b] = hex.match(/\w\w/g).map((x) => parseInt(x, 16));
+  return `rgba(${r},${g},${b},${alpha})`;
 };

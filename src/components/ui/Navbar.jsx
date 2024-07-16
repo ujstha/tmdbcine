@@ -16,7 +16,7 @@ export const Navbar = () => {
           <Image
             src={"/assets/logo.png"}
             fill
-            sizes="100vw"
+            sizes="20vw"
             alt="TMDbCine logo"
             priority
           />

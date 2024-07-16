@@ -1,8 +1,13 @@
-import { Card, CardImage, CardTitle, FavoriteButton } from "@/components";
+import {
+  Card,
+  CardImage,
+  CardTitle,
+  FavoriteButton,
+  Genre,
+} from "@/components";
 import { API_IMAGE_BASE_URL } from "@/constants";
-import { renderReleaseYear, toSlug } from "@/utils";
+import { toSlug } from "@/utils";
 import Link from "next/link";
-import { Genre } from "./Genre";
 import { Rating } from "./Rating";
 
 export const MediaCard = ({ item }) => {
@@ -21,11 +26,11 @@ export const MediaCard = ({ item }) => {
           />
         </Card>
         <CardTitle>
-          {item.title} ({renderReleaseYear(item)})
+          {item.title} ({item.release_year})
         </CardTitle>
       </Link>
       <div className="mt-2 flex flex-wrap gap-1">
-        <Genre genres={item?.genre_ids} mediaType={item?.media_type} />
+        <Genre genres={item?.genres} mediaType={item?.media_type} />
       </div>
     </>
   );
