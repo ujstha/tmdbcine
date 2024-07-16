@@ -19,7 +19,7 @@ export const fetchTrending = async () => {
       include_image_language: "null",
     },
   });
-  return response;
+  return response?.data;
 };
 
 export const fetchById = async (type = "", id) => {
@@ -40,10 +40,10 @@ export const fetchById = async (type = "", id) => {
       include_image_language: "null",
     },
   });
-  return response;
+  return response?.data;
 };
 
 export const fetchGenre = async (type) => {
   const response = await client.get(`/genre/${type}/list`);
-  return response;
+  return response?.data;
 };

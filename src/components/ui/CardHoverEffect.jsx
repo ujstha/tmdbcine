@@ -15,7 +15,7 @@ export const CardHoverEffect = ({ children, index }) => {
       <AnimatePresence>
         {hoveredIndex === index && (
           <motion.span
-            className="absolute inset-0 block size-full rounded-xl bg-background-hover"
+            className="absolute inset-0 block size-full rounded-xl bg-background-hover backdrop-blur-lg"
             layoutId="hoverBackground"
             initial={{ opacity: 0 }}
             animate={{
