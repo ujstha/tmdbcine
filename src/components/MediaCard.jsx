@@ -9,7 +9,10 @@ export const MediaCard = ({ item }) => {
   return (
     <>
       <FavoriteButton />
-      <Link href={`${item.id}/${toSlug(item.title)}`} className="relative">
+      <Link
+        href={`/${item.media_type}/${item.id}/${toSlug(item.title)}`}
+        className="relative"
+      >
         <Card>
           <Rating item={item} />
           <CardImage

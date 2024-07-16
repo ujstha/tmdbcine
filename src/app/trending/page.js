@@ -1,6 +1,6 @@
 "use client";
 
-import { CardHoverEffect, Loader, MediaCard } from "@/components";
+import { CardHoverEffect, Loader, MediaCard, Section } from "@/components";
 import { useTrendings } from "@/hooks";
 
 const Trending = () => {
@@ -11,13 +11,13 @@ const Trending = () => {
   }
   console.log({ data });
   return (
-    <div className="mx-auto grid grid-cols-2 sm:max-w-body-md md:grid-cols-4 lg:max-w-body lg:grid-cols-5">
+    <Section containerClassName="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
       {data?.data?.results?.map((item, idx) => (
         <CardHoverEffect key={idx} index={idx}>
           <MediaCard item={item} />
         </CardHoverEffect>
       ))}
-    </div>
+    </Section>
   );
 };
 
