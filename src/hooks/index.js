@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchGenre, fetchTrending } from "@/services";
+import { fetchById, fetchGenre, fetchTrending } from "@/services";
 import { useQuery } from "@tanstack/react-query";
 
 export const useTrendings = () =>
@@ -14,3 +14,8 @@ export const useGenres = (mediaType = "movie") =>
     queryKey: ["genres"],
     queryFn: async () => await fetchGenre(mediaType),
   });
+
+export const useMovieById = (id) => useQuery({
+  queryKey: ['movie-by-id'],
+  queryFn: async () => await fetchById('movie', id)
+})

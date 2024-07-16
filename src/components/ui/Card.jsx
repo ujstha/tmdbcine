@@ -34,7 +34,11 @@ export const CardImage = ({ className, title, src }) => {
     <Image
       src={src}
       fill
-      alt={title}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      style={{ objectFit: "cover" }}
+      alt={`${title} image`}
+      priority
+      quality={100}
       className={cn("bg-foreground", className)}
     />
   );
