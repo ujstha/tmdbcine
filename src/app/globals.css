@@ -47,9 +47,28 @@ body {
     content: ", ";
   }
 }
+.slide-prev {
+  animation: slide-prev 0.2s ease-in-out;
+}
 
-iconify-icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
+.slide-next {
+  animation: slide-next 0.2s ease-in-out;
+}
+
+@keyframes slide-prev {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-next {
+  from {
+    transform: translateX(50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

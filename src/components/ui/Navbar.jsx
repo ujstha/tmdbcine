@@ -10,7 +10,7 @@ const navItems = [
 
 export const Navbar = () => {
   return (
-    <header className="sticky top-0 z-50 py-2">
+    <header className="sticky top-0 z-50 p-2">
       <Container className="flex !max-w-2xl items-center justify-between rounded-lg border border-background-hover bg-background px-4 py-2">
         <Link href={"/"} className="relative h-10 w-24">
           <Image

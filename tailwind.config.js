@@ -29,6 +29,15 @@ module.exports = {
       fontSize: {
         xxs: "0.65rem",
       },
+      keyframes: {
+        slide: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        slide: "slide 0.2s ease-in-out",
+      },
     },
   },
   plugins: [],

@@ -9,11 +9,10 @@ const Movie = ({ params }) => {
   if (isLoading) return <Loader />;
 
   return (
-    <div>
+    <>
       {console.log({ data })}
-      {params.id}
-      {params.slug}
-    </div>
+      <div></div>
+    </>
   );
 };
 
