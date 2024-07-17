@@ -21,7 +21,7 @@ const Movie = ({ params }) => {
         <div className="absolute inset-0 size-full bg-black/50" />
         <div className="absolute bottom-0 h-3/4 w-full bg-gradient-to-t from-background-secondary text-foreground-secondary">
           <Container className="flex h-full flex-col justify-center">
-            <h1 className="w-3/5 text-balance text-3xl font-bold md:text-5xl">
+            <h1 className="w-3/4 text-balance text-3xl font-bold sm:w-5/6 md:text-5xl">
               {data.original_title}
             </h1>
             <h2 className="text-lg">{data.tagline}</h2>

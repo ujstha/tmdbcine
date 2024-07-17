@@ -20,7 +20,7 @@ export const CardTitle = ({ className, children }) => {
   return (
     <h4
       className={cn(
-        "relative mt-2.5 truncate leading-5 tracking-wide text-accent",
+        "relative mt-2.5 truncate leading-5 text-accent",
         className
       )}
     >
