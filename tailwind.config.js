@@ -16,6 +16,7 @@ module.exports = {
         "foreground-secondary": "var(--tc-text-secondary)",
         "background-secondary": "var(--tc-bg-secondary)",
         "background-hover": "var(--tc-bg-hover)",
+        tcborder: "var(--tc-border)",
       },
       height: {
         68: "17rem",
