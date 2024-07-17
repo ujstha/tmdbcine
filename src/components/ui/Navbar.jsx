@@ -3,15 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navItems = [
-  { href: "/", title: "" },
   { href: "/movies", title: "Movies" },
   { href: "/tv-shows", title: "TV Shows" },
 ];
 
 export const Navbar = () => {
   return (
-    <header className="sticky top-0 z-50 p-2">
-      <Container className="flex !max-w-2xl items-center justify-between rounded-lg border border-background-hover bg-background px-4 py-2">
+    <header className="fixed left-1/2 top-0 z-50 w-full -translate-x-1/2 p-2">
+      <Container className="flex !max-w-2xl items-center justify-between rounded-lg border border-background-hover bg-background-hover px-4 py-2 backdrop-blur-sm">
         <Link href={"/"} className="relative h-10 w-24">
           <Image
             src={"/assets/logo.png"}
