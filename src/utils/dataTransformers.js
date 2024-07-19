@@ -2,6 +2,18 @@
 import { getTitle } from "./diffKeyValue";
 import { formatFullDate, formatYear } from "./formatDate";
 
+export const transformData = (item, genres, mediaType) => ({
+  id: item.id,
+  vote_average: item.vote_average,
+  poster_path: item.poster_path ?? item.backdrop_path,
+  media_type: item.media_type,
+  release_year: formatYear(item, mediaType),
+  genres: genres.genres
+    .filter(({ id }) => item.genre_ids.includes(id))
+    .map((genre) => ({ id: genre.id, name: genre.name })),
+  title: getTitle(item, mediaType),
+});
+
 export const transformMovieData = (response) => {
   const {
     adult,
@@ -63,8 +75,8 @@ export const transformPersonData = (response) => {
   };
 };
 
-export const transformDataByType = (response, type) => {
-  switch (type) {
+export const transformDataByType = (response, mediaType) => {
+  switch (mediaType) {
     case "movie":
       return transformMovieData(response);
     case "tv":

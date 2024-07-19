@@ -6,7 +6,7 @@ import {
   Genre,
 } from "@/components";
 import { API_IMAGE_BASE_URL } from "@/constants";
-import { toSlug } from "@/utils";
+import { createSlug } from "@/utils";
 import Link from "next/link";
 import { Rating } from "./Rating";
 
@@ -15,7 +15,7 @@ export const MediaCard = ({ item, showTitle = true }) => {
     <>
       <FavoriteButton />
       <Link
-        href={`/${item.media_type}s/${item.id}/${toSlug(item.title)}`}
+        href={`/${item.media_type}s/${item.id}/${createSlug(item.title)}`}
         className="relative"
       >
         <Card>

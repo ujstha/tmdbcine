@@ -1,31 +1,57 @@
 /* eslint-disable camelcase */
-import { formatFullDate, formatYear, getTitle } from "@/utils";
+import { transformData, transformDataByType } from "@/utils";
 import { fetcher } from "./fetcher";
 
-export const fetchGenre = async (type) => {
-  return fetcher(`/genre/${type}/list`);
+const genreCache = {
+  movie: null,
+  tv: null,
+};
+
+export const fetchGenres = async (mediaType) => {
+  if (genreCache[mediaType]) {
+    return genreCache[mediaType];
+  }
+
+  const data = await fetcher(`/genre/${mediaType}/list`);
+  genreCache[mediaType] = data;
+  return data;
+};
+
+export const fetchDataWithGenres = async (endpoint, mediaType) => {
+  try {
+    const response = await fetcher(endpoint);
+    const genres = mediaType ? await fetchGenres(mediaType) : null;
+
+    return {
+      page: response?.page,
+      total_pages: response?.total_pages,
+      results: response?.results.map((item) =>
+        transformData(item, genres, mediaType)
+      ),
+    };
+  } catch (error) {
+    console.error(`Failed to fetch data from ${endpoint}:`, error);
+    return {
+      page: 0,
+      total_pages: 0,
+      results: [],
+    };
+  }
 };
 
 export const fetchTrending = async (mediaType = "movie") => {
-  const response = await fetcher(`/trending/${mediaType}/week`);
-  const genres = await fetchGenre(mediaType);
+  const endpoint = `/trending/${mediaType}/week`;
+  return fetchDataWithGenres(endpoint, mediaType);
+};
 
-  console.log({ response });
-  return {
-    page: response?.page,
-    total_pages: response?.total_pages,
-    results: response?.results.map((item) => ({
-      id: item.id,
-      vote_average: item.vote_average,
-      poster_path: item.poster_path ?? item.backdrop_path,
-      media_type: item.media_type,
-      release_year: formatYear(item, item.media_type),
-      genres: genres.genres
-        .filter(({ id }) => item.genre_ids.includes(id))
-        .map((genre) => genre),
-      title: getTitle(item, item.media_type),
-    })),
-  };
+export const fetchTopRated = async (mediaType = "movie") => {
+  const endpoint = `/${mediaType}/top_rated`;
+  return fetchDataWithGenres(endpoint, mediaType);
+};
+
+export const fetchUpcoming = async (mediaType = "movie") => {
+  const endpoint = `/${mediaType}/upcoming`;
+  return fetchDataWithGenres(endpoint, mediaType);
 };
 
 export const fetchById = async (mediaType = "movie", id) => {
@@ -44,25 +70,5 @@ export const fetchById = async (mediaType = "movie", id) => {
       mediaType === "person" ? APPEND_FOR_PERSON : APPEND_FOR_MEDIA,
   });
 
-  const {
-    adult,
-    origin_country,
-    original_language,
-    popularity,
-    production_companies,
-    production_countries,
-    spoken_languages,
-    belongs_to_collection,
-    external_ids,
-    ...newResponse
-  } = response;
-
-  return {
-    ...newResponse,
-    release_date: formatFullDate(response, mediaType),
-    release_year: formatYear(response, mediaType),
-    title: getTitle(response, mediaType),
-    imdb_id: response.external_ids.imdb_id,
-    videos: newResponse.videos.results,
-  };
+  return transformDataByType(response, mediaType);
 };
