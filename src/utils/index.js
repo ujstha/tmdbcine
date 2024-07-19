@@ -1,4 +1,5 @@
 export * from "./cn";
+export * from "./formatDate";
 
 export const toSlug = (str, separator = "-") => {
   return str
@@ -11,8 +12,33 @@ export const toSlug = (str, separator = "-") => {
     .replace(/\s+/g, separator);
 };
 
-export const renderReleaseYear = (releaseDate) => {
-  return new Date(releaseDate).getFullYear();
+const titleKeys = {
+  movie: ["title", "original_title"],
+  tv: ["name", "original_name"],
+  person: ["name", "original_name"],
+};
+
+const dateKeys = {
+  movie: ["release_date"],
+  tv: ["first_air_date", "air_date"],
+  person: ["birthday"],
+};
+
+const getItemWithKey = (item, keys) => {
+  for (const key of keys) {
+    if (item[key]) return item[key];
+  }
+  return null;
+};
+
+export const getTitle = (item, type) => {
+  const keys = titleKeys[type] || [];
+  return getItemWithKey(item, keys);
+};
+
+export const getDate = (item, type) => {
+  const keys = dateKeys[type] || [];
+  return getItemWithKey(item, keys);
 };
 
 export const hexToRgba = (hex, alpha = 1) => {

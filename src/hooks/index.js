@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 export const useTrendings = () =>
   useQuery({
     queryKey: ["trendings"],
-    queryFn: async () => await fetchTrending(),
+    queryFn: async () => await fetchTrending("tv"),
   });
 
 export const useGenres = (mediaType = "movie") =>
@@ -15,7 +15,8 @@ export const useGenres = (mediaType = "movie") =>
     queryFn: async () => await fetchGenre(mediaType),
   });
 
-export const useMovieById = (id) => useQuery({
-  queryKey: ['movie-by-id'],
-  queryFn: async () => await fetchById('movie', id)
-})
+export const useMovieById = (id) =>
+  useQuery({
+    queryKey: ["movie-by-id"],
+    queryFn: async () => await fetchById("movie", id),
+  });
