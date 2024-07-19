@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { formatFullDate, formatYear, getDate, getTitle } from "@/utils";
+import { formatFullDate, formatYear, getTitle } from "@/utils";
 import { fetcher } from "./fetcher";
 
 export const fetchGenre = async (type) => {
@@ -19,7 +19,7 @@ export const fetchTrending = async (mediaType = "movie") => {
       vote_average: item.vote_average,
       poster_path: item.poster_path ?? item.backdrop_path,
       media_type: item.media_type,
-      release_year: formatYear(getDate(item, item.media_type)),
+      release_year: formatYear(item, item.media_type),
       genres: genres.genres
         .filter(({ id }) => item.genre_ids.includes(id))
         .map((genre) => genre),
@@ -59,8 +59,8 @@ export const fetchById = async (mediaType = "movie", id) => {
 
   return {
     ...newResponse,
-    release_date: formatFullDate(getDate(response, mediaType)),
-    release_year: formatYear(getDate(response, mediaType)),
+    release_date: formatFullDate(response, mediaType),
+    release_year: formatYear(response, mediaType),
     title: getTitle(response, mediaType),
     imdb_id: response.external_ids.imdb_id,
     videos: newResponse.videos.results,

@@ -41,7 +41,7 @@ export const transformTvData = (response) => {
 
   return {
     ...newResponse,
-    first_air_date: formatFullDate(response, "tv"),
+    release_date: formatFullDate(response, "tv"),
     release_year: formatYear(response, "tv"),
     title: getTitle(response, "tv"),
     imdb_id: response.external_ids?.imdb_id,
