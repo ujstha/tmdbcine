@@ -4,7 +4,7 @@ import { CardHoverEffect, MediaCard, Section, Skeleton } from "@/components";
 import { useTrendings } from "@/hooks";
 
 const Trending = () => {
-  const { isLoading, data } = useTrendings("tv");
+  const { isLoading, data } = useTrendings();
 
   console.log({ dd: data });
 

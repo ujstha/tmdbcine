@@ -14,3 +14,4 @@ export const formatDate = (dateString, format = "year") => {
 };
 
 export const formatFullDate = (dateString) => formatDate(dateString, "full");
+export const formatYear = (dateString) => formatDate(dateString, "year");
