@@ -8,9 +8,7 @@ export const transformData = (item, genres, mediaType) => ({
   poster_path: item.poster_path ?? item.backdrop_path,
   media_type: item.media_type,
   release_year: formatYear(item, mediaType),
-  genres: genres.genres
-    .filter(({ id }) => item.genre_ids.includes(id))
-    .map((genre) => ({ id: genre.id, name: genre.name })),
+  genres: genres.genres.filter(({ id }) => item.genre_ids.includes(id)),
   title: getTitle(item, mediaType),
 });
 

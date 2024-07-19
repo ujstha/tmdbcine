@@ -1,7 +1,6 @@
 "use client";
 
-import { fetchById, fetchDataWithGenres, fetchGenres } from "@/services";
-import { useQuery } from "@tanstack/react-query";
+import { fetchById, fetchDataWithGenres } from "@/services";
 import useSWR from "swr";
 
 export const useTrendings = (mediaType) =>
@@ -9,14 +8,5 @@ export const useTrendings = (mediaType) =>
     fetchDataWithGenres(`/trending/${mediaType}/week`, mediaType)
   );
 
-export const useGenres = (mediaType = "movie") =>
-  useQuery({
-    queryKey: ["genres"],
-    queryFn: async () => await fetchGenres(mediaType),
-  });
-
 export const useMovieById = (id) =>
-  useQuery({
-    queryKey: ["movie-by-id"],
-    queryFn: async () => await fetchById("movie", id),
-  });
+  useSWR([id], (id) => fetchById("movie", id));
