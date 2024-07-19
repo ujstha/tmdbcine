@@ -12,12 +12,12 @@ const dateKeys = {
   person: ["birthday"],
 };
 
-export const getTitle = (item, type) => {
-  const keys = titleKeys[type] || [];
+export const getTitle = (item, mediaType) => {
+  const keys = titleKeys[mediaType] || [];
   return getItemWithKey(item, keys);
 };
 
-export const getDate = (item, type) => {
-  const keys = dateKeys[type] || [];
+export const getDate = (item, mediaType) => {
+  const keys = dateKeys[mediaType] || [];
   return getItemWithKey(item, keys);
 };

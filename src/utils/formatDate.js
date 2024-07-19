@@ -1,3 +1,5 @@
+import { getDate } from "./diffKeyValue";
+
 export const formatDate = (dateString, format = "year") => {
   if (!dateString) return null;
 
@@ -13,5 +15,8 @@ export const formatDate = (dateString, format = "year") => {
   return date.toLocaleDateString("en-US", options);
 };
 
-export const formatFullDate = (dateString) => formatDate(dateString, "full");
-export const formatYear = (dateString) => formatDate(dateString, "year");
+export const formatFullDate = (item, mediaType) =>
+  formatDate(getDate(item, mediaType), "full");
+
+export const formatYear = (item, mediaType) =>
+  formatDate(getDate(item, mediaType), "year");

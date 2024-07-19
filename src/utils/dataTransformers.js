@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { getDate, getTitle } from "./diffKeyValue";
+import { getTitle } from "./diffKeyValue";
 import { formatFullDate, formatYear } from "./formatDate";
 
 export const transformMovieData = (response) => {
@@ -18,8 +18,8 @@ export const transformMovieData = (response) => {
 
   return {
     ...newResponse,
-    release_date: formatFullDate(getDate(response, "movie")),
-    release_year: formatYear(getDate(response, "movie")),
+    release_date: formatFullDate(response, "movie"),
+    release_year: formatYear(response, "movie"),
     title: getTitle(response, "movie"),
     imdb_id: response.external_ids?.imdb_id,
     videos: newResponse.videos?.results ?? [],
@@ -41,8 +41,8 @@ export const transformTvData = (response) => {
 
   return {
     ...newResponse,
-    first_air_date: formatFullDate(getDate(response, "tv")),
-    release_year: formatYear(getDate(response, "tv")),
+    first_air_date: formatFullDate(response, "tv"),
+    release_year: formatYear(response, "tv"),
     title: getTitle(response, "tv"),
     imdb_id: response.external_ids?.imdb_id,
     videos: newResponse.videos?.results ?? [],
@@ -56,8 +56,10 @@ export const transformPersonData = (response) => {
     ...newResponse,
     imdb_id: response.external_ids?.imdb_id,
     known_for: newResponse.known_for_department,
-    birthday: formatFullDate(getDate(response, "person")),
-    deathday: response.deathday ? formatFullDate(response.deathday) : null,
+    birthday: formatFullDate(response, "person"),
+    deathday: response.deathday
+      ? formatFullDate(response.deathday, "person")
+      : null,
   };
 };
 
