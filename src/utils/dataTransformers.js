@@ -15,6 +15,7 @@ export const transformData = (item, genres, mediaType) => ({
 export const transformMovieData = (response) => {
   const {
     adult,
+    original_title,
     origin_country,
     original_language,
     popularity,
@@ -33,6 +34,7 @@ export const transformMovieData = (response) => {
     title: getTitle(response, "movie"),
     imdb_id: response.external_ids?.imdb_id,
     videos: newResponse.videos?.results ?? [],
+    language: response.spoken_languages[0]?.name,
   };
 };
 
