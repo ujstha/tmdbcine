@@ -1,5 +1,5 @@
 import { cn, getImageUrl } from "@/utils";
-import Image from "next/image";
+import { CustomImage } from "./CustomImage";
 
 export const Card = ({ className, children }) => {
   return (
@@ -34,19 +34,19 @@ export const CardImage = ({
   title,
   imgSize = "medium",
   src,
-  onError,
+  ...props
 }) => {
   return (
-    <Image
+    <CustomImage
       src={getImageUrl(src, imgSize)}
       fill
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      style={{ objectFit: "cover" }}
+      style={{ objectFit: "cover", objectPosition: "top" }}
       alt={`${title} image`}
       priority
       quality={100}
-      className={cn("bg-tcborder", className)}
-      onError={onError}
+      {...props}
+      className={cn("bg-tcborder text-xxs", className)}
     />
   );
 };

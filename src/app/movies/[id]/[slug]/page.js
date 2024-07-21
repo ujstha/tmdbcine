@@ -135,9 +135,8 @@ const Movie = ({ params }) => {
           <p className="text-balance text-sm leading-relaxed md:text-base">
             {data.overview}
           </p>
-          <div className="mt-10 grid grid-cols-4 gap-2 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8">
-            <Credits credits={data.credits.cast} />
-          </div>
+
+          <Credits credits={data.credits.cast} />
         </div>
       </Section>
     </>
