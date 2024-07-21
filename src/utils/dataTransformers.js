@@ -37,6 +37,14 @@ export const transformMovieData = (response) => {
     title: getTitle(response, "movie"),
     imdb_id: response.external_ids?.imdb_id,
     videos: newResponse.videos?.results ?? [],
+    credits: {
+      cast: newResponse.credits.cast.map((cast) => ({
+        id: cast.id,
+        name: cast.name,
+        character: cast.character,
+        profile_path: cast.profile_path,
+      })),
+    },
     language: response.spoken_languages[0]?.name,
   };
 };

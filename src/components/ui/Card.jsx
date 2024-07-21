@@ -1,4 +1,4 @@
-import { cn } from "@/utils";
+import { cn, getImageUrl } from "@/utils";
 import Image from "next/image";
 
 export const Card = ({ className, children }) => {
@@ -29,17 +29,24 @@ export const CardTitle = ({ className, children }) => {
   );
 };
 
-export const CardImage = ({ className, title, src }) => {
+export const CardImage = ({
+  className,
+  title,
+  imgSize = "medium",
+  src,
+  onError,
+}) => {
   return (
     <Image
-      src={src}
+      src={getImageUrl(src, imgSize)}
       fill
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       style={{ objectFit: "cover" }}
       alt={`${title} image`}
       priority
       quality={100}
-      className={cn("bg-foreground", className)}
+      className={cn("bg-tcborder", className)}
+      onError={onError}
     />
   );
 };

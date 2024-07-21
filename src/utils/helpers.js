@@ -1,3 +1,5 @@
+import { API_IMAGE_BASE_URL } from "@/constants";
+
 export const createSlug = (str, separator = "-") => {
   return str
     ?.toString()
@@ -12,4 +14,8 @@ export const createSlug = (str, separator = "-") => {
 export const hexToRgba = (hex, alpha = 1) => {
   const [r, g, b] = hex.match(/\w\w/g).map((x) => parseInt(x, 16));
   return `rgba(${r},${g},${b},${alpha})`;
+};
+
+export const getImageUrl = (path, size = "medium") => {
+  return `${API_IMAGE_BASE_URL[size]}${path}`;
 };

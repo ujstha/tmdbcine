@@ -7,14 +7,19 @@ import {
   CustomIcon,
   Genre,
   Loader,
+  Section,
 } from "@/components";
+import { Credits } from "@/components/media/Credits";
 import {
-  API_IMAGE_BASE_URL,
   CALENDAR_ICON,
   CLOCK_ICON,
+  HEART_OUTLINED_ICON,
   LANGUAGE_ICON,
+  LINK_ICON,
+  PLAY_ICON,
 } from "@/constants";
 import { useMovieById } from "@/hooks";
+import { getImageUrl } from "@/utils";
 import Link from "next/link";
 
 const infos = [
@@ -22,7 +27,7 @@ const infos = [
     title: "Duration",
     icon: CLOCK_ICON,
     detail: (data) => ({
-      value: `${data.runtime} min`,
+      value: data.runtime ? `${data.runtime} min` : "N/A",
       href: `/movies?runtime=${data.runtime}`,
     }),
   },
@@ -30,7 +35,7 @@ const infos = [
     title: "Release",
     icon: CALENDAR_ICON,
     detail: (data) => ({
-      value: data.release_date,
+      value: data.release_date ?? "N/A",
       href: `/movies?release_year=${data.release_year}`,
     }),
   },
@@ -54,36 +59,56 @@ const Movie = ({ params }) => {
       </div>
     );
 
+  const linkClass =
+    "flex size-10 sm:size-12 items-center justify-center rounded-lg border border-tcborder bg-tcborder backdrop-blur-sm transition-all duration-200 hover:border-danger hover:text-danger";
+
   return (
     <>
       {console.log({ data })}
       <div
         style={{
-          backgroundImage: `url(${API_IMAGE_BASE_URL.original}/${data?.backdrop_path})`,
+          backgroundImage: `url(${getImageUrl(data?.backdrop_path, "original")})`,
         }}
-        className="relative h-[80dvh] w-full bg-cover bg-center md:h-[60dvh] lg:h-screen"
+        className="relative h-screen w-full bg-cover bg-center md:h-[85dvh]"
       >
-        <div className="absolute inset-0 size-full bg-black/50" />
-        <div className="absolute bottom-0 h-3/4 w-full bg-gradient-to-t from-background text-foreground-secondary">
-          <Container className="flex h-full flex-col justify-center">
-            <div className="flex items-start gap-8">
-              <Card className="hidden !h-72 shadow-sm shadow-background-secondary sm:block">
-                <CardImage
-                  src={`${API_IMAGE_BASE_URL.medium}${data.poster_path}`}
-                  alt={data.title}
-                />
-              </Card>
+        <div className="absolute inset-0 size-full bg-black/70" />
+        <div
+          className={`absolute bottom-0 h-1/2 w-full bg-gradient-to-t from-background text-foreground-secondary sm:h-3/4`}
+        >
+          <Container className="flex h-full flex-col justify-end pb-2">
+            <div className="flex flex-col justify-center gap-8 md:flex-row md:justify-start">
+              <div className="flex items-start gap-4 sm:flex-row sm:gap-8">
+                <Card className="h-48 max-w-32 shadow-sm shadow-background-secondary sm:block md:!h-80 md:w-56 md:max-w-56">
+                  <CardImage src={data.poster_path} title={data.title} />
+                </Card>
+                <div className="flex flex-col gap-2">
+                  <Link href={`/`} className={linkClass}>
+                    <CustomIcon icon={HEART_OUTLINED_ICON} height={28} />
+                  </Link>
+                  <Link href={`/`} className={linkClass}>
+                    <CustomIcon icon={PLAY_ICON} height={32} />
+                  </Link>
+                  <Link
+                    href={data.homepage}
+                    className={linkClass}
+                    target="_blank"
+                  >
+                    <CustomIcon icon={LINK_ICON} height={28} />
+                  </Link>
+                </div>
+              </div>
               <div>
-                <h1 className="w-5/6 text-balance text-3xl font-extrabold sm:w-full md:text-4xl lg:w-3/4 lg:text-5xl">
-                  {data.title}
+                <h1 className="text-balance text-3xl font-extrabold leading-none md:text-4xl lg:text-5xl">
+                  {data.title}{" "}
+                  <small className="font-normal">({data.release_year})</small>
                 </h1>
-                <h2 className="mt-2 text-lg">{data.tagline}</h2>
-                <div className="mt-4 grid max-w-md grid-cols-3 gap-1 overflow-hidden rounded-lg border border-tcborder p-1">
+                <h2 className="mt-2 text-lg text-secondary">{data.tagline}</h2>
+                <div className="mt-4 grid max-w-md grid-cols-3 gap-1 overflow-hidden rounded-lg border border-tcborder p-1 backdrop-blur-sm">
                   {infos.map((info) => (
                     <Link
                       href={`${info.detail(data).href}`}
                       key={info.title}
-                      className="group flex items-center gap-3 rounded-md p-1 transition-all duration-200 hover:backdrop-blur-lg sm:px-2"
+                      className="group flex items-center gap-3 rounded-md border border-transparent p-1 transition-all duration-200 hover:border-tcborder sm:px-2"
                     >
                       <CustomIcon icon={info.icon} />
                       <span className="flex flex-col">
@@ -105,6 +130,16 @@ const Movie = ({ params }) => {
           </Container>
         </div>
       </div>
+      <Section>
+        <div>
+          <p className="text-balance text-sm leading-relaxed md:text-base">
+            {data.overview}
+          </p>
+          <div className="mt-10 grid grid-cols-4 gap-2 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8">
+            <Credits credits={data.credits.cast} />
+          </div>
+        </div>
+      </Section>
     </>
   );
 };

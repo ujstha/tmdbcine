@@ -10,3 +10,4 @@ export const API_IMAGE_BASE_URL = {
 };
 export const API_VIDEO_BASE_URL = "https://www.youtube.com/embed/";
 export const API_LANGUAGE = "en-US";
+export const IMAGE_NOT_AVAILABLE_URL = "/assets/image-not-available.png";

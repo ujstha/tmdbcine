@@ -10,9 +10,8 @@ const Trending = () => {
 
   return (
     <>
-      <Section containerClassName="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+      <Section containerClassName="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {isLoading && Array.from(Array(10), (v, i) => <Skeleton key={i} />)}
-
         {data?.results?.map((item, idx) => (
           <CardHoverEffect key={idx} index={idx}>
             <MediaCard item={item} />
