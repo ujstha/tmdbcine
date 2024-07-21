@@ -1,5 +1,3 @@
-import { getItemWithKey } from "./helpers";
-
 const titleKeys = {
   movie: ["title", "original_title"],
   tv: ["name", "original_name"],
@@ -14,10 +12,10 @@ const dateKeys = {
 
 export const getTitle = (item, mediaType) => {
   const keys = titleKeys[mediaType] || [];
-  return getItemWithKey(item, keys);
+  return keys.map((key) => item[key]).find((title) => title) || null;
 };
 
 export const getDate = (item, mediaType) => {
   const keys = dateKeys[mediaType] || [];
-  return getItemWithKey(item, keys);
+  return keys.map((key) => item[key]).find((date) => date) || null;
 };

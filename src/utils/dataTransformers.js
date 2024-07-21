@@ -2,15 +2,18 @@
 import { getTitle } from "./diffKeyValue";
 import { formatFullDate, formatYear } from "./formatDate";
 
-export const transformData = (item, genres, mediaType) => ({
-  id: item.id,
-  vote_average: item.vote_average,
-  poster_path: item.poster_path ?? item.backdrop_path,
-  media_type: item.media_type,
-  release_year: formatYear(item, mediaType),
-  genres: genres.genres.filter(({ id }) => item.genre_ids.includes(id)),
-  title: getTitle(item, mediaType),
-});
+export const transformData = (item, genres, mediaType) => {
+  const { id, vote_average, poster_path, backdrop_path, media_type } = item;
+  return {
+    id,
+    vote_average,
+    poster_path: poster_path ?? backdrop_path,
+    media_type,
+    release_year: formatYear(item, mediaType),
+    genres: genres.genres.filter(({ id }) => item.genre_ids.includes(id)),
+    title: getTitle(item, mediaType),
+  };
+};
 
 export const transformMovieData = (response) => {
   const {
