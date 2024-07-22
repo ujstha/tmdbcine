@@ -72,3 +72,11 @@ export const fetchById = async (mediaType = "movie", id) => {
 
   return transformDataByType(response, mediaType);
 };
+
+export const fetchCreditsByMediaId = async (mediaType = "movie", id) => {
+  const response = await fetcher(`/${mediaType}/${id}`, {
+    append_to_response: "credits",
+  });
+
+  return transformDataByType(response, mediaType);
+};

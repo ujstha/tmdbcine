@@ -10,16 +10,18 @@ export const Section = ({ children, sectionClassName, containerClassName }) => {
   );
 };
 
-export const SectionHeading = ({ title }) => {
+export const SectionHeading = ({ title, url = "" }) => {
   return (
-    <div className="mb-4 mt-8 flex items-center justify-between">
+    <div className="mb-4 mt-12 flex items-center justify-between">
       <h2 className="text-xl font-semibold">{title}</h2>
-      <Link
-        href={`/`}
-        className="rounded-md border border-transparent px-2 py-1 text-sm underline underline-offset-4 transition-all duration-200 hover:border-danger hover:text-danger"
-      >
-        View More
-      </Link>
+      {url && (
+        <Link
+          href={url}
+          className="rounded-md border border-transparent px-2 py-1 text-sm underline underline-offset-4 transition-all duration-200 hover:border-danger hover:text-danger"
+        >
+          View More
+        </Link>
+      )}
     </div>
   );
 };

@@ -4,12 +4,13 @@ import {
   Card,
   CardImage,
   Container,
+  Credits,
   CustomIcon,
   Genre,
   Loader,
   Section,
+  SectionHeading,
 } from "@/components";
-import { Credits } from "@/components/media/Credits";
 import {
   CALENDAR_ICON,
   CLOCK_ICON,
@@ -135,8 +136,10 @@ const Movie = ({ params }) => {
           <p className="text-balance text-sm leading-relaxed md:text-base">
             {data.overview}
           </p>
-
-          <Credits credits={data.credits.cast} />
+          <SectionHeading title={"Casts"} url={`${params.slug}/credits`} />
+          <Credits credits={data.credits.cast} show="short" />
+          <SectionHeading title={"Crews"} url={`${params.slug}/credits`} />
+          <Credits credits={data.credits.crew} show="short" />
         </div>
       </Section>
     </>

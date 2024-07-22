@@ -1,3 +1,4 @@
+export * from "./media/Credits";
 export * from "./media/Genre";
 export * from "./media/MediaCard";
 export * from "./media/Rating";

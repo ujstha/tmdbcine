@@ -44,6 +44,12 @@ export const transformMovieData = (response) => {
         character: cast.character,
         profile_path: cast.profile_path,
       })),
+      crew: newResponse.credits.crew.map((crew) => ({
+        id: crew.id,
+        name: crew.name,
+        character: crew.job,
+        profile_path: crew.profile_path,
+      })),
     },
     language: response.spoken_languages[0]?.name,
   };
