@@ -5,6 +5,7 @@ export const generateMetadata = async ({ params }) => {
   const movie = await fetchById("movie", params.id);
 
   return {
+    metadataBase: "https://tmdb-cine.netlify.app",
     title: movie.title,
     description: movie.overview.substring(0, 160),
     openGraph: {

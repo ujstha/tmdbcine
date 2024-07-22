@@ -52,7 +52,9 @@ export const generateCarouselSettings = (options = {}) => {
         slidesToScroll:
           options[
             `breakpoint_${breakpointSetting.breakpoint}_slidesToScroll`
-          ] ?? breakpointSetting.settings.slidesToScroll,
+          ] ??
+          options[`breakpoint_${breakpointSetting.breakpoint}_slidesToShow`] ??
+          breakpointSetting.settings.slidesToScroll,
       },
     })),
     ...restOptions,

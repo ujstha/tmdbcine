@@ -31,7 +31,7 @@ export const Section = ({ children, sectionClassName, containerClassName }) => {
 export const SectionHeading = ({ title, itemCount, url = "" }) => {
   if (url) {
     return (
-      <Link href={url} className="group mb-4 mt-12 flex items-center gap-2">
+      <Link href={url} className="group mb-4 mt-10 flex items-center gap-2">
         <h2 className="text-xl font-medium md:text-2xl">{title}</h2>
         <span className="flex items-center">
           <small className="text-xs text-secondary">{itemCount}</small>{" "}
@@ -45,6 +45,6 @@ export const SectionHeading = ({ title, itemCount, url = "" }) => {
   }
 
   return (
-    <h2 className="mb-4 mt-12 text-xl font-medium md:text-2xl">{title}</h2>
+    <h2 className="mb-4 mt-10 text-xl font-medium md:text-2xl">{title}</h2>
   );
 };

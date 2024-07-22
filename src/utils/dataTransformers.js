@@ -55,6 +55,14 @@ export const transformMovieData = (response) => {
         profile_path: crew.profile_path,
       })),
     },
+    similar: newResponse.similar.results.map((item) => ({
+      ...item,
+      media_type: "movie",
+    })),
+    recommendations: newResponse.recommendations.results.map((item) => ({
+      ...item,
+      media_type: "movie",
+    })),
     language: response.spoken_languages[0]?.name,
   };
 };

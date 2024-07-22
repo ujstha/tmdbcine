@@ -9,6 +9,7 @@ import {
   Genre,
   Images,
   Loader,
+  MediaCarousel,
   Section,
   SectionHeading,
 } from "@/components";
@@ -155,6 +156,10 @@ const Movie = ({ params }) => {
             url={`${params.slug}/images`}
           />
           <Images images={data.images} show="short" />
+          <SectionHeading title={"More like this"} />
+          <MediaCarousel medias={data.similar} />
+          <SectionHeading title={"Recommended by us"} />
+          <MediaCarousel medias={data.recommendations} />
         </div>
       </Section>
     </>

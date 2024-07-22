@@ -2,6 +2,7 @@ export * from "./media/Credits";
 export * from "./media/Genre";
 export * from "./media/Images";
 export * from "./media/MediaCard";
+export * from "./media/MediaCarousel";
 export * from "./media/Rating";
 export * from "./ui/Card";
 export * from "./ui/CardHoverEffect";

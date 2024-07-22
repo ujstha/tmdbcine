@@ -10,7 +10,7 @@ import { createSlug } from "@/utils";
 import Link from "next/link";
 import { Rating } from "./Rating";
 
-export const MediaCard = ({ item, showTitle = true }) => {
+export const MediaCard = ({ item, showTitle = true, cardClass }) => {
   return (
     <>
       <FavoriteButton />
@@ -18,7 +18,7 @@ export const MediaCard = ({ item, showTitle = true }) => {
         href={`/${item.media_type}s/${item.id}/${createSlug(item.title)}`}
         className="relative"
       >
-        <Card>
+        <Card className={cardClass}>
           <Rating item={item} />
           <CardImage
             title={item.title}
