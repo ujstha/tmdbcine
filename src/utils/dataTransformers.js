@@ -37,6 +37,10 @@ export const transformMovieData = (response) => {
     title: getTitle(response, "movie"),
     imdb_id: response.external_ids?.imdb_id,
     videos: newResponse.videos?.results ?? [],
+    images: [
+      ...newResponse.images.backdrops.map(({ file_path }) => ({ file_path })),
+      ...newResponse.images.posters.map(({ file_path }) => ({ file_path })),
+    ],
     credits: {
       cast: newResponse.credits.cast.map((cast) => ({
         id: cast.id,

@@ -1,9 +1,10 @@
 .slick-slide {
   padding-right: 8px;
+  padding-bottom: 16px;
 }
 .slick-prev,
 .slick-next {
-  top: 105%;
+  top: -25px;
   height: 30px;
   width: 30px;
   z-index: 40;

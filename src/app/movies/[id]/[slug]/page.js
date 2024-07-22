@@ -7,6 +7,7 @@ import {
   Credits,
   CustomIcon,
   Genre,
+  Images,
   Loader,
   Section,
   SectionHeading,
@@ -136,10 +137,24 @@ const Movie = ({ params }) => {
           <p className="text-balance text-sm leading-relaxed md:text-base">
             {data.overview}
           </p>
-          <SectionHeading title={"Casts"} url={`${params.slug}/credits`} />
+          <SectionHeading
+            title={"Casts"}
+            itemCount={data.credits.cast.length}
+            url={`${params.slug}/credits`}
+          />
           <Credits credits={data.credits.cast} show="short" />
-          <SectionHeading title={"Crews"} url={`${params.slug}/credits`} />
+          <SectionHeading
+            title={"Crews"}
+            itemCount={data.credits.crew.length}
+            url={`${params.slug}/credits`}
+          />
           <Credits credits={data.credits.crew} show="short" />
+          <SectionHeading
+            title={"Photos & Backdrops"}
+            itemCount={data.images.length > 50 ? 50 : data.images.length}
+            url={`${params.slug}/images`}
+          />
+          <Images images={data.images} show="short" />
         </div>
       </Section>
     </>

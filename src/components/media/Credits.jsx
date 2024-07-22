@@ -38,6 +38,7 @@ export const Credits = ({ credits = [], show = "all" }) => {
       </div>
     );
   }
+
   return (
     <Carousel>{slicedCredits.map((credit) => renderCredits(credit))}</Carousel>
   );

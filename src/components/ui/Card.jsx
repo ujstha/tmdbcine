@@ -45,8 +45,13 @@ export const CardImage = ({
       alt={`${title} image`}
       priority
       quality={100}
+      placeholder="blur"
+      blurDataURL={getImageUrl(src, "extra_small")}
       {...props}
-      className={cn("bg-tcborder text-xxs", className)}
+      className={cn(
+        "bg-tcborder text-xxs transition-all duration-200",
+        className
+      )}
     />
   );
 };
