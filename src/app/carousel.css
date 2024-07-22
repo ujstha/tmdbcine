@@ -1,0 +1,21 @@
+.slick-slide {
+  padding-right: 8px;
+}
+.slick-prev,
+.slick-next {
+  top: -25px;
+  height: 30px;
+  width: 30px;
+  z-index: 40;
+}
+.slick-prev {
+  left: calc(100% - 65px);
+}
+.slick-next {
+  right: 0;
+}
+.slick-prev::before,
+.slick-next::before {
+  font-size: 25px;
+  color: var(--tc-text-secondary);
+}
