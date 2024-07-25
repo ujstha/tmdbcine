@@ -26,7 +26,7 @@ export const MediaCarousel = ({ medias = [] }) => {
           className="group rounded-lg border border-tcborder"
         >
           <MediaCard
-            cardClass="h-40 md:!h-44 lg:!h-52 xl:!h-56"
+            cardClass="h-44 md:!h-44 lg:!h-52 xl:!h-56"
             item={media}
             showTitle={false}
           />
