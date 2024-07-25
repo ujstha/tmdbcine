@@ -106,7 +106,7 @@ const Movie = ({ params }) => {
                   <small className="font-normal">({data.release_year})</small>
                 </h1>
                 <h2 className="mt-2 text-lg text-secondary">{data.tagline}</h2>
-                <div className="mt-4 grid max-w-md grid-cols-3 gap-1 overflow-hidden rounded-lg border border-tcborder p-1 backdrop-blur-sm">
+                <div className="mt-4 grid max-w-md grid-cols-3 overflow-hidden rounded-lg border border-tcborder p-1 backdrop-blur-sm">
                   {infos.map((info) => (
                     <Link
                       href={`${info.detail(data).href}`}
