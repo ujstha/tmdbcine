@@ -8,7 +8,7 @@ export const CardHoverEffect = ({ children, index }) => {
 
   return (
     <div
-      className="group relative block size-full overflow-hidden rounded-xl p-3"
+      className="group relative size-full overflow-hidden rounded-xl p-1 sm:p-2 lg:p-3"
       onMouseEnter={() => setHoveredIndex(index)}
       onMouseLeave={() => setHoveredIndex(null)}
     >

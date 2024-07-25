@@ -5,12 +5,12 @@ export const Card = ({ className, children }) => {
   return (
     <div
       className={cn(
-        "bg-background md:h-60 lg:h-68 relative z-20 h-64 max-w-48 w-full overflow-hidden rounded-lg",
+        "bg-background md:h-60 lg:h-68 relative z-20 h-64 max-w-full w-full overflow-hidden rounded-lg",
         className
       )}
     >
       <div className="relative z-50 h-full">
-        <div className="relative h-full p-4">{children}</div>
+        <div className="relative h-full">{children}</div>
       </div>
     </div>
   );
@@ -18,14 +18,14 @@ export const Card = ({ className, children }) => {
 
 export const CardTitle = ({ className, children }) => {
   return (
-    <h4
+    <h3
       className={cn(
-        "relative mt-2.5 truncate leading-5 text-accent",
+        "relative mt-2.5 !w-[95%] truncate leading-5 text-accent",
         className
       )}
     >
       {children}
-    </h4>
+    </h3>
   );
 };
 
